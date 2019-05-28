@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html, body{
+    height: 100vh;
+    width: 100vw;
+}
+
+
+
+#watchContainer{
+    z-index: 2;
+}
+
+.handContainer{
+    position: absolute;
+    z-index: 1;
+}
+
+.hand{
+    height: 400px;
+    width: 5px;
+    background-color: #bdc3c7;
+    transform-origin: bottom;
+    transform: translateY(-50%) rotate(0deg);
+}
