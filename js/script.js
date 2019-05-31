@@ -1,38 +1,60 @@
 $(document).ready(function(){
+// console.log("Stopwatch");
 
-    // setInterval()
-    // setTimeout()
+var timer;
+  var seconds = 0;
+  var minutes = 0;
 
-    // setTimeout(function(){
-    //     console.log('this has happened after 5 seconds');
-    // }, 5000);
-    // console.log("this should happen first");
-    //
-    // setTimeout(function(){
-    //     console.log('this has happened after 11 seconds');
-    // }, 6000);
+  $('#start').click(function(){
+    $(this).hide();
+    $('#pause').removeClass('d-none').show();
+    setTimerInterval();
+  });
 
-    // var int = setInterval(function(){
-    //     console.log('this is happening every 2 seconds');
-    // }, 2000)
-    //
-    // setTimeout(function(){
-    //     clearTimeout(int);
-    //     console.log('timeout has been cleared');
-    // }, 10000)
+  $('#pause').click(function(){
+    $(this).hide();
+    $('#continue').removeClass('d-none').show();
+    $('#reset').removeClass('d-none').show();
+    clearInterval(timer);
+  });
+
+  $('#continue').click(function(){
+      $(this).hide();
+      $('#reset').hide();
+      $('#pause').show();
+      setTimerInterval();
+  });
+
+  $('#reset').click(function(){
+      $(this).hide();
+      $('#start').show();
+      $('#continue').hide();
+      $('#minutes').text('0');
+      $('#seconds').text('00');
+      seconds = 0;
+      minutes = 0;
+  });
 
 
-    $('#start').click(function(){
-        var seconds = 0;
-        setInterval(function(){
-            // console.log('this is happening every second');
-            seconds++;
-            console.log(seconds);
-            $('#seconds').text(seconds);
-        }, 1000);
-    });
-
-
+  function setTimerInterval(){
+    timer = setInterval(function(){
+      // console.log("every second");
+      seconds++;
+      if(seconds == 60){
+        minutes++;
+        seconds = 0;
+        $('#minutes').text(minutes);
+        // console.log("minutes");
+      }
+      if(seconds < 10){
+        $('#seconds').text('0'+seconds);
+        // console.log("seconds");
+      } else {
+        $('#seconds').text(seconds);
+        // console.log("seconds");
+      }
+    }, 1000);
+  }
 
 
 
